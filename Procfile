@@ -1,1 +1,1 @@
-web: python poeBOT.py
+web: python poeBOT.py -p $PORT
