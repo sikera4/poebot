@@ -46,7 +46,7 @@ def callback_worker(call):
   if call.data == "zodiac": 
     msg = random.choice(first) + ' ' + random.choice(second) + ' ' + random.choice(second_add) + ' ' + random.choice(third)
     bot.send_message(call.message.chat.id, msg)
-bot.polling(none_stop=True, interval=0, timeout=35)
+bot.polling(none_stop=True, interval=0, timeout=45)
 
 
             
