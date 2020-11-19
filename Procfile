@@ -1,1 +1,1 @@
-worker: python poeBOT.py -p $PORT
+bot: python poeBOT.py -p $PORT
