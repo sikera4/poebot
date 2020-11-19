@@ -2,6 +2,7 @@ import telebot
 import random
 import requests
 from telebot import types
+from bs4 import BeautifulSoup
 bot = telebot.TeleBot('1481033988:AAGT5qgfAJa-gzdHRztNkdxH_5HQ7YDFz4c')
 signs = ['Овен', 'Телец', 'Близнецы', 'Рак', 'Лев', 'Дева', 'Весы', 'Скорпион', 'Стрелец', 'Козерог', 'Водолей', 'Рыбы']
 signseng = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces']
