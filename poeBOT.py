@@ -15,7 +15,7 @@ def get_text_messages(message):
   if "привет" in message.text.lower():
         bot.send_message(message.from_user.id, "Привет, сейчас я расскажу тебе гороскоп на сегодня.")
         keyboard = types.InlineKeyboardMarkup()
-        for i in range(len(signs) - 1):
+        for i in range(len(signs)):
               keyboard.add(types.InlineKeyboardButton(text = signs[i], callback_data = str(i)))
         bot.send_message(message.from_user.id, text='Выбери свой знак зодиака', reply_markup=keyboard)
   else:
