@@ -12,14 +12,19 @@ def handle_start_help(message):
       bot.send_message(message.from_user.id, text='Напиши привет!')
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-  if "привет" in message.text.lower():
-        bot.send_message(message.from_user.id, "Привет, сейчас я расскажу тебе гороскоп на сегодня.")
-        keyboard = types.InlineKeyboardMarkup()
-        for i in range(len(signs)):
-              keyboard.add(types.InlineKeyboardButton(text = signs[i], callback_data = str(i)))
-        bot.send_message(message.from_user.id, text='Выбери свой знак зодиака', reply_markup=keyboard)
-  else:
-        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+      if "привет" in message.text.lower() or "гороскоп" in message.text.lower():
+            bot.send_message(message.from_user.id, "Привет, сейчас я расскажу тебе гороскоп на сегодня.")
+            keyboard = types.InlineKeyboardMarkup()
+            for i in range(len(signs)):
+                  keyboard.add(types.InlineKeyboardButton(text = signs[i], callback_data = str(i)))
+            bot.send_message(message.from_user.id, text='Выбери свой знак зодиака', reply_markup=keyboard)
+            keyb = types.ReplyKeyboardMarkup()
+            item = 'Хочу гороскоп!'
+            keyb.add(item)
+            bot.sendmessage(message.from_user.id, text = "В дальнейшем для получения актуального гороскопа нажмите на кнопку Хочу гороскоп!", reply_markup = keyb)
+
+      else:
+            bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
@@ -107,6 +112,7 @@ def callback_worker(call):
             result = soup.findAll('div', class_ ="article__item article__item_alignment_left article__item_html")
             msg = result[0].text
             bot.send_message(call.message.chat.id, msg)
+      
       
 
 bot.polling(none_stop=True, interval=0, timeout=45)
