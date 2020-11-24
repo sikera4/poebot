@@ -12,7 +12,7 @@ def handle_start_help(message):
       keyb = types.ReplyKeyboardMarkup()
       item = types.KeyboardButton('Хочу гороскоп!')
       keyb.add(item)
-      bot.sendmessage(message.from_user.id, text = "Напиши привет или нажми на кнопку Хочу гороскоп!", reply_markup = keyb)
+      bot.send_message(message.from_user.id, text = "Напиши привет или нажми на кнопку Хочу гороскоп!", reply_markup = keyb)
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
