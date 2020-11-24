@@ -9,7 +9,7 @@ signseng = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'sco
 
 @bot.message_handler(commands=['start', 'help'])
 def handle_start_help(message):
-      keyb = types.ReplyKeyboardMarkup()
+      keyb = types.ReplyKeyboardMarkup(resize_keyboard = True)
       item = types.KeyboardButton('Хочу гороскоп!')
       keyb.add(item)
       bot.send_message(message.from_user.id, text = "Напиши привет или нажми на кнопку Хочу гороскоп!", reply_markup = keyb)
