@@ -19,7 +19,7 @@ def get_text_messages(message):
                   keyboard.add(types.InlineKeyboardButton(text = signs[i], callback_data = str(i)))
             bot.send_message(message.from_user.id, text='Выбери свой знак зодиака', reply_markup=keyboard)
             keyb = types.ReplyKeyboardMarkup()
-            item = 'Хочу гороскоп!'
+            item = types.KeyboardButton('Хочу гороскоп!')
             keyb.add(item)
             bot.sendmessage(message.from_user.id, text = "В дальнейшем для получения актуального гороскопа нажмите на кнопку Хочу гороскоп!", reply_markup = keyb)
 
