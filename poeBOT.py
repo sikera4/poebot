@@ -9,7 +9,11 @@ signseng = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'sco
 
 @bot.message_handler(commands=['start', 'help'])
 def handle_start_help(message):
-      bot.send_message(message.from_user.id, text='Напиши привет!')
+      keyb = types.ReplyKeyboardMarkup()
+      item = types.KeyboardButton('Хочу гороскоп!')
+      keyb.add(item)
+      bot.sendmessage(message.from_user.id, text = "Напиши привет или нажми на кнопку Хочу гороскоп!", reply_markup = keyb)
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
       if "привет" in message.text.lower() or "гороскоп" in message.text.lower():
@@ -18,11 +22,7 @@ def get_text_messages(message):
             for i in range(len(signs)):
                   keyboard.add(types.InlineKeyboardButton(text = signs[i], callback_data = str(i)))
             bot.send_message(message.from_user.id, text='Выбери свой знак зодиака', reply_markup=keyboard)
-            keyb = types.ReplyKeyboardMarkup()
-            item = types.KeyboardButton('Хочу гороскоп!')
-            keyb.add(item)
-            bot.sendmessage(message.from_user.id, text = "В дальнейшем для получения актуального гороскопа нажмите на кнопку Хочу гороскоп!", reply_markup = keyb)
-
+            
       else:
             bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
 
